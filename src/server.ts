@@ -10,4 +10,7 @@ app.use(express.json());
 
 app.listen(port, ()=> console.log(`Server running on port: ${port}! 🚀`));
 
+app.get('/', (request, response) => {
+  return response.json({message: 'Ok'})
+})
 app.post('/sendEmail', CreateUserService.createUser)
