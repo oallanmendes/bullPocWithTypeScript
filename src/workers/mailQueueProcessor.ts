@@ -1,18 +1,16 @@
 import { Worker } from 'bullmq';
-import Mail from './libs/mail';
+import Mail from '../libs/mail';
 
-import RegistrationMail from './jobs/RegistrationMail';
-
-const worker = new Worker(RegistrationMail.key, async job => {
+const worker = new Worker('RegistrationMail', async job => {
   try {
     await Mail.sendMail({
-      from: 'Allan Mendes <oallanmendes@gmail.com>',
+      from: 'Allan Mendes 2 <oallanmendes2@gmail.com>',
       to: `${job.data.data.name} <${job.data.data.email}>`,
       subject: 'Cadastro concluído',
-      html: `Olá ${job.data.data.name}, testando Bull Poc`
+      html: `Olá ${job.data.data.name}, testando Bull Poc\r\n ${new Date}`
     })
   } catch (error) {
-    console.log(error)
+    console.log(`${job.id} falhou com o erro ${error}`)
   }
 }, 
 );

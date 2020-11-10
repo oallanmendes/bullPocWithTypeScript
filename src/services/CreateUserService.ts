@@ -1,9 +1,7 @@
 import { Request, Response } from 'express';
 import { hash } from 'bcrypt';
 
-import mailQueue from '../libs/queue';
-
-import RegistrationMail from '../jobs/RegistrationMail';
+import mailQueue from '../libs/mailQueue';
 
 export default {
   async createUser (request:Request, response:Response) {
@@ -16,7 +14,7 @@ export default {
     }
 
     // adicionar job RegistrationMail na fila
-    await mailQueue.add(RegistrationMail.key, {data: user});
+    await mailQueue.add('RegistrationMail', {data: user});
 
     return response.json(user)
   }

@@ -1,8 +1,7 @@
 import { Queue } from 'bullmq';
 import redisConfig from '../config/redis';
-import RegistrationMail from '../jobs/RegistrationMail';
 
-const mailQueue = new Queue(RegistrationMail.key, {
+const mailQueue = new Queue('RegistrationMail', {
   connection: redisConfig,
 })
 
