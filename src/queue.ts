@@ -14,8 +14,13 @@ const worker = new Worker(RegistrationMail.key, async job => {
   } catch (error) {
     console.log(error)
   }
-});
+}, 
+);
 
 worker.on('completed', (job) => {
   console.log(`${job.id} has completed!`);
 });
+
+worker.on('drained', (job) => {
+  console.log('Mais nenhum processo em fila')
+})
