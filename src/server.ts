@@ -3,7 +3,7 @@ import express from 'express';
 
 import CreateUserService from './services/CreateUserService';
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.json());
