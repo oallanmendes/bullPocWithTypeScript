@@ -1,5 +1,5 @@
 {
-  "name": "bullPoc",
+  "name": "bullpoc",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -7,17 +7,17 @@
     "dev:server": "ts-node-dev --inspect --ignore-watch node_modules src/server.ts",
     "dev:queue": "ts-node-dev --ignore-watch node_modules src/workers/mailQueueProcessor.ts",
     "start": "yarn && yarn tsc && npm-run-all -p start:*",
-    "start:server": "node dist/server.js ",
+    "start:server": "node dist/server.js",
     "start:queue": "node dist/workers/mailQueueProcessor.js"
   },
   "dependencies": {
-    "bcrypt": "^5.0.0",
     "bull-board": "^0.10.0",
     "bullmq": "^1.10.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "nodemailer": "^6.4.15",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "redis": "^3.0.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",

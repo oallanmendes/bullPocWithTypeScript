@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { hash } from 'bcrypt';
+// import { hash } from 'bcrypt';
 
 import mailQueue from '../libs/mailQueue';
 
@@ -10,10 +10,10 @@ export default {
     const user = {
       name,
       email,
-      password: await hash(password, 10),
+      password,
     }
 
-    // adicionar job RegistrationMail na fila
+    console.log('Enviado para fila')
     await mailQueue.add('RegistrationMail', {data: user});
 
     return response.json(user)

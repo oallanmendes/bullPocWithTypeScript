@@ -3,6 +3,7 @@ import Mail from '../libs/mail';
 
 const worker = new Worker('RegistrationMail', async job => {
   try {
+    console.log('Recebido pela fila')
     await Mail.sendMail({
       from: 'Allan Mendes 2 <oallanmendes2@gmail.com>',
       to: `${job.data.data.name} <${job.data.data.email}>`,
