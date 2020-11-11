@@ -8,7 +8,7 @@ const worker = new Worker('RegistrationMail', async job => {
       from: 'Allan Mendes 2 <oallanmendes2@gmail.com>',
       to: `${job.data.data.name} <${job.data.data.email}>`,
       subject: 'Cadastro concluído',
-      html: `Olá ${job.data.data.name}, testando Bull Poc\r\n ${new Date}`
+      html: `Olá ${job.data.data.name}, testando Bull Poc </br> ${new Date}`
     })
   } catch (error) {
     console.log(`${job.id} falhou com o erro ${error}`)
